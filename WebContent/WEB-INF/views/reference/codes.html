@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{template/mainlayout}">
+
+<a class="page-title" layout:fragment="page-header">REFERENCE CODES</a>
+
+<div layout:fragment="content">
+
+	<div class="row">
+		<!-- EMPTY SPACE -->
+	</div>
+
+	<div class="row">
+		<!-- EMPTY SPACE -->
+	</div>
+
+	<div class="row">
+		<label>KEYS</label> <select>
+			<option th:each="key : ${keyListDistinct}" th:text="${key}">
+			</option>
+		</select>
+	</div>
+
+	<div class="row">
+		<!-- EMPTY SPACE -->
+	</div>
+
+	<div class="row">
+		<label>VALUES</label> <select>
+			<option th:each="referenceCode : ${referenceCodeList}"
+				th:text="${referenceCode.value}"></option>
+		</select>
+	</div>
+
+	<div class="row">
+		<!-- EMPTY SPACE -->
+	</div>
+
+	<div class="row">
+		<!-- EMPLOYEE TABLE -->
+		<table id="table_reference" class="highlight">
+			<thead>
+				<tr>
+					<th>KEY</th>
+					<th>VALUE</th>
+					<th>DESCRIPTION</th>
+					<th class="right-align">ACTIONS</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="referenceCode : ${referenceCodeList}"
+					th:id="${referenceCode.id}">
+					<td id="td_key" th:text="${referenceCode.key}"></td>
+					<td id="td_value" th:text="${referenceCode.value}"></td>
+					<td id="td_description" th:text="${referenceCode.description}"></td>
+					<td id="td_actions" class="right">
+						<!-- ROW ACTIONS --> <a
+						class="cols s1 btn-floating waves-effect waves-light blue darken-2 tooltipped edit"
+						data-position="top" data-delay="50" data-tooltip="Edit Employee"><i
+							class="material-icons">mode_edit</i></a> <a
+						class="cols s1 btn-floating waves-effect waves-light blue darken-2 tooltipped delete"
+						data-position="top" data-delay="50" data-tooltip="Delete Employee"><i
+							class="material-icons">delete</i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="row">
+		<!-- Divider -->
+		<div class="divider orange"></div>
+	</div>
+	<div class="row">
+
+		<ul class="pagination">
+			<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+			<li class="active"><a href="#!">1</a></li>
+			<li class="waves-effect"><a href="#!">2</a></li>
+			<li class="waves-effect"><a href="#!">3</a></li>
+			<li class="waves-effect"><a href="#!">4</a></li>
+			<li class="waves-effect"><a href="#!">5</a></li>
+			<li class="waves-effect"><a href="#!"><i
+					class="material-icons">chevron_right</i></a></li>
+		</ul>
+		<div class="col s1 right">
+		   <a id="search" th:href="@{/reference/codes/search}" class="right btn-floating waves-effect waves-light blue darken-2 tooltipped"
+				data-position="top" data-delay="50"
+				data-tooltip="Search Reference Codes"><i class="material-icons">search</i></a>
+		   </div>
+		<!-- ADDITIONAL ACTIONS -->
+		<div class="col s1 right">
+			<a id="add"
+				class="right btn-floating waves-effect waves-light blue darken-2 tooltipped"
+				data-position="top" data-delay="50"
+				data-tooltip="Add Reference Codes"><i class="material-icons">note_add</i></a>
+		</div>
+	</div>
+
+	<!-- EMPLOYEE DETAIL MODAL -->
+	<div id="modal_reference_code_detail" class="modal col s6">
+		<div class="modal-content">
+			<h4>
+				<span id="modal_reference_code_detail_header">Employee Detail</span>
+			</h4>
+			<div class="row">
+				<form id="referenceCodeDetailForm" class="col s12"
+					th:object="${referenceCodeDetailForm}">
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="key" th:field="*{key}" type="text" class="validate">
+							<label for="key">KEY</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="value" th:field="*{value}" type="text"
+								class="validate"> <label for="value">VALUE</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="description" th:field="*{description}" type="text"
+								class="validate"> <label for="description">DESCRIPTION</label>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<div class="divider"></div>
+			<a class="modal-action modal-close waves-effect waves-red btn-flat ">Close</a>
+			<a id="add_action" th:href="@{/reference/codes/add}"
+				style="display: none;"></a> 
+			<a id="update_action"
+				th:href="@{/reference/codes/update}" style="display: none;"></a>
+			<a id="delete_action" th:href="@{/reference/codes/delete}"
+				style="display: none;"></a> <input id="save_action" type="hidden"
+				value=""> 
+			<a id="btn_detail_save"
+				class="modal-action modal-close waves-effect waves-green btn-flat ">Save</a>
+		</div>
+	</div>
+
+	<!-- PAGE SCRIPT -->
+	<script type="text/javascript"
+		th:src="@{/static/js/reference/codes.js}"
+		layout:fragment="page-script">
+		
+	</script>
+</html>

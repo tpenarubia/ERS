@@ -1,0 +1,12 @@
+org\sofgen\ers\model\ReferenceCode.class
+org\sofgen\ers\controller\EmployeeController.class
+org\sofgen\ers\dao\impl\EmployeeDaoImpl.class
+org\sofgen\ers\service\impl\EmployeeServiceImpl.class
+org\sofgen\ers\controller\form\EmployeeDetailForm.class
+org\sofgen\ers\dataobject\ResponseResult.class
+org\sofgen\ers\model\Employee.class
+org\sofgen\ers\service\EmployeeService.class
+org\sofgen\ers\dao\impl\BaseDaoImpl.class
+org\sofgen\ers\model\BaseEntity.class
+org\sofgen\ers\dao\BaseDao.class
+org\sofgen\ers\dao\EmployeeDao.class

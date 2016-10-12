@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{template/mainlayout}">
+
+	<!-- PAGE HEADER -->
+	<a class="page-title" layout:fragment="page-header">EMPLOYEE</a>
+      
+     <div layout:fragment="content">
+
+		<div class="row">	<!-- EMPTY SPACE -->
+		</div>
+		
+		<div class="row">	<!-- EMPTY SPACE -->
+		</div>
+		
+		<div class="row">	<!-- EMPLOYEE TABLE -->
+			<table id="table_employee" class="highlight">
+		    	<thead>
+		        	<tr>
+		            	<th>ID</th>
+		              	<th>FIRST NAME</th>
+		              	<th>LAST NAME</th>
+		              	<th class="right-align">ACTIONS</th>
+		          	</tr>
+		        </thead>
+		        	
+		        <tbody>
+		        	<tr th:each="employee : ${employeeList}" th:id="${employee.id}">
+		          		<td id="td_code" th:text="${employee.empId}"></td>
+		          		<td id="td_name" th:text="${employee.firstname}"></td>
+		          		<td id="td_pay_grade" th:text="${employee.surname}"></td>
+		          		<td id="td_actions" class="right">	<!-- ROW ACTIONS -->
+		          			<a class="cols s1 btn-floating waves-effect waves-light blue darken-2 tooltipped edit" data-position="top" data-delay="50" data-tooltip="Edit Employee"><i class="material-icons">mode_edit</i></a>
+		          			<a class="cols s1 btn-floating waves-effect waves-light blue darken-2 tooltipped delete" data-position="top" data-delay="50" data-tooltip="Delete Employee"><i class="material-icons">delete</i></a>
+		          		</td>
+		          	</tr>
+		        </tbody>
+		    </table>
+		</div>
+		
+		<div class="row">	<!-- Divider -->
+			<div class="divider orange"></div>
+		</div>
+		
+		<div class="row">	<!-- ADDITIONAL ACTIONS -->
+			<div class="col s1 offset-s11">
+				<a id="add" class="right btn-floating waves-effect waves-light blue darken-2 tooltipped" data-position="top" data-delay="50" data-tooltip="Add Employee"><i class="material-icons">note_add</i></a>
+			</div>
+		</div>
+		
+		<!-- EMPLOYEE DETAIL MODAL -->
+		<div id="modal_employee_detail" class="modal col s6">
+			<div class="modal-content">
+				<h4><span id="modal_employee_detail_header">Employee Detail</span></h4>
+				<div class="row">
+				     <form id="employeeDetailForm" class="col s12" th:object="${employeeDetailForm}">
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="empId" th:field="*{empId}" type="text" class="validate">
+								<label for="empId">EMPLOYEE ID</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="firstname" th:field="*{firstname}" type="text" class="validate">
+								<label for="firstname">FIRST NAME</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="surname" th:field="*{surname}" type="text" class="validate">
+								<label for="surname">LAST NAME</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="surname" th:field="*{surname}" type="text" class="validate">
+								<label for="surname">LAST NAME</label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="divider"></div>
+				<a class="modal-action modal-close waves-effect waves-red btn-flat ">Close</a>
+				<a id="add_action" th:href="@{/record/employee/add}" style="display: none;"></a>
+				<a id="update_action" th:href="@{/record/employee/update}" style="display: none;"></a>
+				<a id="delete_action" th:href="@{/record/employee/delete}" style="display: none;"></a>
+				<input id="save_action" type="hidden" value="">
+				<a id="btn_detail_save" class="modal-action modal-close waves-effect waves-green btn-flat ">Save</a>
+			</div>
+		</div>
+	</div>
+    
+     
+	<!-- PAGE SCRIPT -->
+	<script type="text/javascript" th:src="@{/static/js/record/employee.js}" layout:fragment="page-script">
+	</script>
+	
+</html>
