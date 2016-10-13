@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.sofgen.ers.model.ReferenceCode;
-import org.sofgen.ers.model.SearchResult;
 
 
 public interface ReferenceCodeService {
@@ -22,7 +21,5 @@ public interface ReferenceCodeService {
 	boolean deleteReferenceCode(Long id);
 	
 	ReferenceCode updateReferenceCode(String key, String value, String description);
-	
-	SearchResult getSearchResults(Map<String, Object> params, int fetchSize, int page);
 
 }

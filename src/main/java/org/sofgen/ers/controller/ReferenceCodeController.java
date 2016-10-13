@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.sofgen.ers.model.ReferenceCode;
-import org.sofgen.ers.model.SearchResult;
 
 @Controller
 @RequestMapping("/reference")
@@ -31,11 +30,6 @@ public class ReferenceCodeController {
 	
 	private static final String VIEW_REFERENCE_CODES_PAGE= "reference/codes";
 	
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/codes/search", method = RequestMethod.POST)
-	public @ResponseBody SearchResult<ReferenceCode> searchResults(int fetchSize, int page){
-		return referenceCodeService.getSearchResults(null, fetchSize, page);
-	}
 	@RequestMapping(value="/codes", method= RequestMethod.GET)
 	public ModelAndView view() {
 		ModelAndView modelAndView = new ModelAndView(VIEW_REFERENCE_CODES_PAGE);

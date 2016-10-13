@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.sofgen.ers.model.ReferenceCode;
-import org.sofgen.ers.model.SearchResult;
 import org.sofgen.ers.service.ReferenceCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,20 +73,6 @@ public class ReferenceCodeServiceImpl implements ReferenceCodeService {
 	@Override
 	public List<ReferenceCode> getDistinctKeyList() {
 		return referenceCodeDao.listAllKeysDistinct();
-	}
-
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public SearchResult<ReferenceCode> getSearchResults(Map<String, Object> params, int fetchSize, int page) {
-	    
-	    
-	    //int resultCount = referenceCodeDao.countSearch(params, fetchSize, page);
-	    List<ReferenceCode> searchResult = referenceCodeDao.search(params, fetchSize, page);
-	    
-	    SearchResult<ReferenceCode> result = new SearchResult(searchResult, fetchSize, page);
-	    
-	    return result;
 	}
  
 }
