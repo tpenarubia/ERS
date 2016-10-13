@@ -129,36 +129,7 @@ $(document).ready(function(){
 				});
 			}
 	});
-
   
-  $('#search').on('click', function(){
-		var url = $('#search').attr('href');
-
-		showLoadingProgressInd();
-		
-		$.ajax({
-			url : url,
-			type : 'POST',
-			data : { 'params' : null,
-				     'fetchSize': 3,
-				      'page': 3},
-				      
-			complete: function(){
-				$.unblockUI();
-				$('.lean-overlay').remove();
-			},
-			success : function(data) {
-			  console.log(data);
-			},
-			error : function() {
-				$('#message_modal #message_modal_header').text('Error');
-				$('#message_modal #message_modal_message').text('Unknown Error');
-
-				$('#message_modal_close_action').val('');
-				$('#message_modal').openModal( {dismissible: false} );
-			}
-		});
-	});
+  $('select').material_select();
   
-  $('select').material_select()
 }); 
